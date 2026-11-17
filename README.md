@@ -99,6 +99,12 @@ db/migrations/                # invariantes também no PostgreSQL
 e2e/                          # Playwright: aprovação e pagamento repetido
 ```
 
+## Documentação
+
+- [`docs/SPEC.md`](docs/SPEC.md) — problema, modelo, invariantes e critérios de aceite.
+- [`docs/notes/`](docs/notes/) — notas curtas de investigação; começa pelo
+  [remember me](docs/notes/001-remember-me.md).
+
 ## Decisões
 
 - **Sem Filament.** O painel é Livewire + Tailwind próprios; o objetivo é mostrar domínio
