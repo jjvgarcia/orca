@@ -15,6 +15,10 @@ web_environment: []
 nodejs_version: "22"
 corepack_enable: false
 
+hooks:
+    post-start:
+        - exec: "bash /var/www/html/.ddev/create-test-db.sh"
+
 # Key features of DDEV's config.yaml:
 
 # name: <projectname> # Name of the project, automatically provides

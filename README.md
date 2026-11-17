@@ -72,9 +72,9 @@ ddev exec ./vendor/bin/pest          # 57 testes, inclui o reset do demo
 npx playwright test                  # 2 fluxos contra o DDEV em execução
 ```
 
-O Pest usa o banco `db_test` (criado no primeiro `ddev start`; se faltar:
-`ddev psql -c "CREATE DATABASE db_test;"`). O Playwright usa `ORCA_URL` para apontar
-para outra URL; por padrão `https://orca.ddev.site:30001`.
+O Pest usa o banco `db_test`, criado automaticamente pelo hook `post-start` do DDEV.
+O Playwright usa `ORCA_URL` para apontar para outra URL; por padrão
+`https://orca.ddev.site:30001`.
 
 ## Estrutura
 
