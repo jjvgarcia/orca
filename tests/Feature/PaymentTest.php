@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\PaymentMethod;
 use App\Enums\ReceivableStatus;
 use App\Models\Payment;
 use App\Services\OrderService;
@@ -90,7 +91,7 @@ it('marca parcela como parcial e calcula o saldo', function () {
     app(PaymentService::class)->register(
         $receivable,
         40_000,
-        App\Enums\PaymentMethod::Transfer,
+        PaymentMethod::Transfer,
         today(),
         'parcial-1',
     );

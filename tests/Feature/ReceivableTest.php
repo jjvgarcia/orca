@@ -2,8 +2,10 @@
 
 use App\Enums\PaymentMethod;
 use App\Enums\ReceivableStatus;
-use App\Models\Receivable;
+use App\Models\Order;
 use App\Services\PaymentService;
+use App\Services\QuotationService;
+use Illuminate\Support\Facades\Schema;
 
 it('divide o pedido em parcelas que somam exatamente o total', function (int $total, int $installments) {
     $service = makeService($total);
@@ -11,9 +13,9 @@ it('divide o pedido em parcelas que somam exatamente o total', function (int $to
         ['service_id' => $service->id, 'quantity' => 1],
     ], $installments);
 
-    app(App\Services\QuotationService::class)->decide($quotation, true, '127.0.0.1', 'Pest UA');
+    app(QuotationService::class)->decide($quotation, true, '127.0.0.1', 'Pest UA');
 
-    $order = App\Models\Order::where('quotation_id', $quotation->id)->firstOrFail();
+    $order = Order::where('quotation_id', $quotation->id)->firstOrFail();
     $receivables = $order->receivables;
 
     expect($receivables)->toHaveCount($installments)
@@ -56,7 +58,7 @@ it('considera vencida a parcela parcialmente paga e atrasada', function () {
 });
 
 it('não grava coluna de status: qualquer parcela tem status derivado', function () {
-    $columns = Illuminate\Support\Facades\Schema::getColumnListing('receivables');
+    $columns = Schema::getColumnListing('receivables');
 
     expect($columns)->not->toContain('status');
 });

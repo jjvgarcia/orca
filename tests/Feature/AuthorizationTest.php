@@ -2,6 +2,8 @@
 
 use App\Livewire\Customers\Form as CustomerForm;
 use App\Livewire\Services\Index as ServicesIndex;
+use App\Models\Customer;
+use App\Models\Service;
 use Livewire\Livewire;
 
 it('nega ao operador apagar cliente e alterar preço de catálogo', function () {
@@ -14,8 +16,8 @@ it('nega ao operador apagar cliente e alterar preço de catálogo', function () 
         ->and($admin->can('delete', $customer))->toBeTrue()
         ->and($operator->can('update', $service))->toBeFalse()
         ->and($admin->can('update', $service))->toBeTrue()
-        ->and($operator->can('create', App\Models\Service::class))->toBeFalse()
-        ->and($operator->can('create', App\Models\Customer::class))->toBeTrue();
+        ->and($operator->can('create', Service::class))->toBeFalse()
+        ->and($operator->can('create', Customer::class))->toBeTrue();
 });
 
 it('bloqueia a ação de arquivar cliente para operador', function () {

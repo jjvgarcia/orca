@@ -5,7 +5,6 @@ namespace App\Livewire\Customers;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Attributes\Layout;
-use Livewire\Attributes\Title;
 use Livewire\Component;
 
 #[Layout('layouts.app')]

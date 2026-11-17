@@ -9,7 +9,10 @@ use App\Livewire\Quotations\Builder;
 use App\Livewire\Quotations\Index as QuotationsIndex;
 use App\Livewire\Quotations\Show as QuotationShow;
 use App\Livewire\Services\Index as ServicesIndex;
+use App\Models\Order;
 use App\Models\Quotation;
+use App\Models\Receivable;
+use App\Services\QuotationService;
 use Livewire\Livewire;
 
 it('renderiza todas as telas principais', function () {
@@ -71,9 +74,9 @@ it('mostra parcela vencida no painel sem job agendado', function () {
     $customer = makeCustomer(['name' => 'Cliente Atrasado']);
     $service = makeService(100_000);
     $quotation = makeSentQuotation($customer, [['service_id' => $service->id, 'quantity' => 1]]);
-    app(App\Services\QuotationService::class)->decide($quotation, true, '127.0.0.1', 'Pest UA');
+    app(QuotationService::class)->decide($quotation, true, '127.0.0.1', 'Pest UA');
 
-    App\Models\Receivable::where('order_id', App\Models\Order::first()->id)->update(['due_date' => today()->subDays(4)]);
+    Receivable::where('order_id', Order::first()->id)->update(['due_date' => today()->subDays(4)]);
 
     Livewire::actingAs($user)
         ->test(Dashboard::class)

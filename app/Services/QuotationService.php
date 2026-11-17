@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\DB;
 
 final class QuotationService
 {
-    public function __construct(private readonly OrderService $orders)
-    {
-    }
+    public function __construct(private readonly OrderService $orders) {}
 
     /**
      * @param  array<int, array{service_id: int, quantity: int, discount_cents?: int|null, description?: string|null}>  $items

@@ -11,9 +11,7 @@ use Stringable;
  */
 final readonly class Money implements Stringable
 {
-    public function __construct(public int $cents)
-    {
-    }
+    public function __construct(public int $cents) {}
 
     public static function fromCents(int $cents): self
     {
