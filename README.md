@@ -49,6 +49,8 @@ Login do demo:
 7 números de orçamento (8 versões, incluindo um expirado e um rascunho), 4 pedidos
 e 9 parcelas — uma vencida, uma parcial e duas pagas.
 
+![Login em tela grande](docs/screenshots/login.png)
+
 ## O que vale ver
 
 - **Construtor de orçamento** (`/quotations/create`): itens com preço puxado do catálogo,
